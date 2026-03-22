@@ -1,0 +1,59 @@
+import express from "express";
+const router = express.Router();
+
+import * as roleController from "../controllers/roleController.js";
+import { validateRole } from "../middlewares/roleValidationMiddleware.js";
+import { authMiddleware } from "../middlewares/authMiddleware.js";
+import { roleMiddleware } from "../middlewares/roleMiddleware.js";
+
+// Create Role
+router.post(
+  "/",
+  // authMiddleware,
+  // roleMiddleware("CREATE_ROLE"),
+  validateRole,
+  roleController.create,
+);
+
+// Get All Roles
+router.get(
+  "/",
+  authMiddleware,
+  roleMiddleware("VIEW_ROLES"),
+  roleController.getAll,
+);
+
+// Get Role by ID
+router.get(
+  "/:id",
+  authMiddleware,
+  roleMiddleware("VIEW_ROLES"),
+  roleController.getOne,
+);
+
+// Update Role
+router.put(
+  "/:id",
+  authMiddleware,
+  roleMiddleware("UPDATE_ROLE"),
+  validateRole,
+  roleController.update,
+);
+
+// Delete Role
+router.delete(
+  "/:id",
+  authMiddleware,
+  roleMiddleware("DELETE_ROLE"),
+  roleController.remove,
+);
+
+//remove permission 
+router.patch(
+  "/:id/remove",
+  authMiddleware,
+  roleMiddleware("UPDATE_ROLE"),
+  roleController.removePermission
+);
+
+export default router;
