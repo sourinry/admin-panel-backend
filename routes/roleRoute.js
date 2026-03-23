@@ -6,16 +6,16 @@ import { validateRole } from "../middlewares/roleValidationMiddleware.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 import { roleMiddleware } from "../middlewares/roleMiddleware.js";
 
-// Create Role
+// Create Role only admin
 router.post(
   "/",
-  // authMiddleware,
-  // roleMiddleware("CREATE_ROLE"),
+  authMiddleware,
+  roleMiddleware("CREATE_ROLE"),
   validateRole,
   roleController.create,
 );
 
-// Get All Roles
+// Get All Roles only admin
 router.get(
   "/",
   authMiddleware,
@@ -23,7 +23,7 @@ router.get(
   roleController.getAll,
 );
 
-// Get Role by ID
+// Get Role by ID only admin
 router.get(
   "/:id",
   authMiddleware,
@@ -31,7 +31,7 @@ router.get(
   roleController.getOne,
 );
 
-// Update Role
+// Update Role only admin
 router.put(
   "/:id",
   authMiddleware,
@@ -40,7 +40,7 @@ router.put(
   roleController.update,
 );
 
-// Delete Role
+// Delete Role only admin
 router.delete(
   "/:id",
   authMiddleware,
@@ -48,7 +48,7 @@ router.delete(
   roleController.remove,
 );
 
-//remove permission 
+//remove permission only admin
 router.patch(
   "/:id/remove",
   authMiddleware,
