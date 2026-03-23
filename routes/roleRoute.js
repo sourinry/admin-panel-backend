@@ -9,8 +9,8 @@ import { roleMiddleware } from "../middlewares/roleMiddleware.js";
 // Create Role only admin
 router.post(
   "/",
-  authMiddleware,
-  roleMiddleware("CREATE_ROLE"),
+  // authMiddleware,
+  // roleMiddleware("CREATE_ROLE"),
   validateRole,
   roleController.create,
 );
