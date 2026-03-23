@@ -115,7 +115,8 @@ Aggregation is used to fetch users with roles and WhatsApp numbers efficiently.
 ## Setup Instructions
 
 ### Clone Repository
-git clone https://github.com/your-username/admin-panel-backend.git
+git clone https://github.com/sourinry/admin-panel-backend.git
+cd admin-panel-backend
 
 
 ---
