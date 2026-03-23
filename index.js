@@ -20,7 +20,7 @@ const PORT = process.env.PORT ? Number(process.env.PORT) : 8080;
 //start the server
 const startServer = async () => {
   try {
-    connectDB();
+    await connectDB();
     app.listen(PORT, () => {
       console.log(`server running on http://localhost:${PORT}`);
     });

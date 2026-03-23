@@ -19,12 +19,6 @@ const userSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Role",
     },
-    // whatsappNumbers:[
-    //     {
-    //         type: mongoose.Schema.Types.ObjectId,
-    //         ref: "Whatsapp"
-    //     }
-    // ]
   },
   { timestamps: true },
 );
