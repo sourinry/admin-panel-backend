@@ -7,24 +7,28 @@ const app = express();
 //import index-route
 import router from './routes/indexRoute.js';
 
-// Configure CORS with specific options
+// CORS config
 const corsOptions = {
-  // Allow only these origins
   origin: [
-    'https://localhost:3000',
-    'https://localhost:4200',
-    'https://localhost:8080',
+    'http://localhost:3000',
+    'http://localhost:4200',
+    'http://localhost:8080',
   ],
-  // Allow these HTTP methods
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  credentials: true,
 };
 
-//middleware
+// middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 
 app.use('/api/v1/', router);
 
+// test route
+app.get('/', (req, res) => {
+  res.send('API is running');
+});
 // error handaler
 import { errorHandler } from "./middlewares/errorMiddleware.js";
 app.use(errorHandler);
